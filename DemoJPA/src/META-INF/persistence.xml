@@ -1,0 +1,31 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="demojpa-pu">
+        <properties>
+        	<!-- La détection se fait par class -->
+            <property name="hibernate.archive.autodetection" value="class" />
+            <!-- Permet d'afficher mes requetes dans la console  -->
+            <property name="hibernate.show_sql" value="true" /> 
+            <!-- Est ce que je formate à l'affichage mon SQL -->
+            <property name="hibernate.format_sql" value="true" />
+ 
+            <!-- Configuration de la  BDD -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/demojpa" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="" />
+ 
+            <!-- Spécifie le 'dialecte' SQL utilisé pour communiquer avec la BDD -->
+            <!-- Si on change de base de donnée on change cette ligne -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+ 
+            <!-- Indique a Hibernate de (re-)créer la BDD au lancement de l'application -->
+            <!-- Une fois la sctructure figée on commente cette ligne -->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+ 
+    </persistence-unit>
+</persistence>
