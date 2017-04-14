@@ -7,10 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Adresse1.findAll",query="SELECT a FROM Adresse a"),
+	@NamedQuery(name="Adresse2.findAll",query="SELECT b FROM Adresse b where b.numRue like:ladresse ")
+})
 public class Adresse {
 	
 	

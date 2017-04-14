@@ -24,7 +24,7 @@
  
             <!-- Indique a Hibernate de (re-)créer la BDD au lancement de l'application -->
             <!-- Une fois la sctructure figée on commente cette ligne -->
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+             <property name="hibernate.hbm2ddl.auto" value="create" /> 
         </properties>
  
     </persistence-unit>

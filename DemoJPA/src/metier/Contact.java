@@ -5,13 +5,16 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="Contact.findAll",query="SELECT c FROM Contact c")
 public class Contact {
 	
 	@Id
@@ -21,10 +24,11 @@ public class Contact {
 	private String nom;
 	private String prenom;
 	private String email;
-	@ManyToOne(cascade=CascadeType.PERSIST) //Permet de faire les opérations en cascade car sinon en même temps ca marche pas à cause des foreign key qui impose un ordre chronologique
+	@ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.LAZY) //Permet de faire les opérations en cascade car sinon en même temps ca marche pas à cause des foreign key qui impose un ordre chronologique
 	private Adresse adresse; // Un contact à une adresse
 	@ManyToMany(mappedBy="contact")  //Celui qui à le mapped by est celuiqui à l'esclave ????????????
 	private Collection<Film> film;
+	
 	
 	public int getId() {
 		return id;
@@ -76,6 +80,9 @@ public class Contact {
 	}
 	@Override
 	public String toString() {
-		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + "]";
+		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", adresse=" + adresse
+				+ "]";
 	}
+	
+	
 }
